@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>بيتزا مشكلة</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Fraunces:ital,wght@1,700&display=swap">
+<style>
+:root{color-scheme:dark;--bg:#0f1426;--bg2:#1a2140;--ink:#f5efe6;--mute:#8f97b5;--acc:#ff4a14;--gold:#ff9d1c;--ok:#1fa564;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:inherit;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:radial-gradient(120% 80% at 50% 0%,var(--bg2),var(--bg));color:var(--ink);font-family:'Cairo',system-ui,sans-serif}
+.app{max-width:440px;margin:0 auto;padding:14px 20px 28px;display:flex;flex-direction:column;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:700;font-size:26px;color:var(--gold)}
+.tabs{display:flex;gap:6px}.tb{border:0;background:#232b4d;color:var(--mute);font:800 12.5px 'Cairo';padding:7px 11px;border-radius:18px;cursor:pointer;transition:.2s}.tb.on{background:var(--gold);color:#1a1a2e}.tb:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ib{background:none;border:0;color:var(--ink);padding:8px;position:relative;cursor:pointer;border-radius:50%}
+.ib:focus-visible,.ing:focus-visible,.sz button:focus-visible,.cta:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ib svg{width:22px;height:22px;display:block}
+.badge{position:absolute;top:0;inset-inline-end:0;background:var(--acc);font-size:11px;font-weight:800;min-width:17px;height:17px;border-radius:9px;display:none;align-items:center;justify-content:center}
+h1{font-size:34px;font-weight:800;margin:14px 0 4px;line-height:1.2}
+h1 em{color:var(--gold);font-style:normal}
+.row{display:flex;align-items:center;justify-content:space-between}
+.sub{color:var(--mute);font-size:14px}
+.sz{display:flex;background:#232b4d;border-radius:20px;padding:3px;direction:ltr}
+.sz button{border:0;background:none;color:var(--mute);width:50px;height:30px;border-radius:16px;font:800 13px 'Cairo';cursor:pointer;transition:.2s}
+.sz button.on{background:var(--ink);color:#1a1a2e}
+.stage{display:grid;place-items:center;margin:14px 0 6px}
+.ring{width:min(78vw,320px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#202a52 0 62%,#161c38 100%);display:grid;place-items:center;box-shadow:0 20px 50px #0008}
+#pizza{width:92%;height:92%;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.pc{animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{from{transform:scale(0) rotate(40deg);opacity:0}}
+.stuf{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:8px 0 2px;padding:10px 16px;border:1.5px solid #2d365e;background:#1d2547;color:var(--ink);border-radius:16px;font:700 15px 'Cairo';cursor:pointer;transition:.2s}.stuf b{color:var(--gold);margin-inline-start:6px}.stuf.on{border-color:var(--gold);background:#2a2f4a}.stuf:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sw{width:40px;height:22px;border-radius:11px;background:#3a4373;position:relative;transition:.2s;flex:none}.sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}.stuf.on .sw{background:var(--ok)}.stuf.on .sw::after{left:21px}
+.hint{text-align:center;color:var(--mute);font-size:13px;margin:4px 0 12px;min-height:20px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 8px;margin-bottom:18px}
+.ingw{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative}
+.ing{width:62px;height:62px;border-radius:50%;border:2px solid #2d365e;background:#1d2547;cursor:pointer;display:grid;place-items:center;transition:.2s;padding:0}
+.ing:active{transform:scale(.92)}
+.ing.on{border-color:var(--acc);box-shadow:0 0 0 3px #ff4a1428}
+.ing svg{width:44px;height:44px}
+.ingw span{font-size:12px;color:var(--ink)}
+.cnt{position:absolute;top:-4px;inset-inline-end:2px;background:var(--acc);border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:800;display:none;place-items:center}
+.minus{position:absolute;top:-4px;inset-inline-start:2px;width:20px;height:20px;border-radius:50%;border:0;background:#3a4373;color:#fff;font-weight:800;line-height:1;display:none;cursor:pointer;padding:0}
+.on~.cnt{display:grid}.on~.minus{display:block}
+.cta{margin-top:auto;border:0;border-radius:30px;height:58px;padding:0 24px;background:linear-gradient(180deg,#ff5a22,#e63a0a);color:#fff;font:800 17px 'Cairo';display:flex;justify-content:space-between;align-items:center;cursor:pointer;box-shadow:0 10px 24px #ff4a1444;transition:background .3s}
+.cta.ok{background:var(--ok);box-shadow:0 10px 24px #1fa56444;justify-content:center}
+.cta small{opacity:.85;font-weight:600;margin-inline-start:6px}
+.wl{display:flex;align-items:center;gap:10px}.wi{width:24px;height:24px;flex:none}
+.pr{direction:ltr;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <button class="ib" id="back" aria-label="رجوع"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="tabs"><button class="tb on" data-m="mix">بيتزا مشكلة</button><button class="tb" data-m="four">بيتزا الفصول الأربعة</button></div>
+    <div style="display:flex">
+      <button class="ib" id="reset" aria-label="إعادة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></button>
+      <button class="ib" id="cart" aria-label="الطلب"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg><b class="badge" id="badge">0</b></button>
+    </div>
+  </div>
+  <h1 id="h1">ركّب <em>بيتزتك</em></h1>
+  <div class="row">
+    <div class="sub">فرن عمو أبو عمر</div>
+    <div class="sz" id="sz"><button data-s="M">M</button><button data-s="XL" class="on">XL</button></div>
+  </div>
+  <div class="stage"><div class="ring"><svg id="pizza" viewBox="-150 -150 300 300"></svg></div></div>
+  <button class="stuf" id="stuf" aria-pressed="false"><span>حشوة أطراف <b class="pr">50 ₺</b></span><i class="sw"></i></button>
+  <div class="hint" id="hint">المس مكوّنًا لإضافته</div>
+  <div class="grid" id="grid"></div>
+  <button class="cta" id="cta"><span class="wl"><svg class="wi" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>ارسال للواتساب</span><span class="pr" id="price"></span></button>
+</div>
+<script>
+var T={
+ mozz:{n:'موزاريلا',k:110,d:'<g fill="none" stroke-linecap="round"><path d="M-12-4q5-6 11-1t11 3" stroke="#fff6dc" stroke-width="3"/><path d="M-11 4q6 5 12 0t9-3" stroke="#f9e7b3" stroke-width="2.6"/><path d="M-6-10q-3 8 2 14" stroke="#fffaea" stroke-width="2.4"/><path d="M5-9q4 6 0 15" stroke="#f3dc9c" stroke-width="2.4"/></g>'},
+ pep:{n:'بيبروني',k:4,d:'<circle r="14" fill="#b3261e" stroke="#7d1410" stroke-width="2"/><circle cx="-5" cy="-4" r="2" fill="#e8574b"/><circle cx="5" cy="3" r="2.2" fill="#8c1a14"/><circle cx="-2" cy="6" r="1.6" fill="#e8574b"/>'},
+ mush:{n:'فطر',k:5,d:'<path d="M-12 2a12 11 0 0 1 24 0z" fill="#c4cad4" stroke="#868f9e" stroke-width="1.5"/><path d="M-8-2a9 7 0 0 1 8-5" stroke="#f3f6fa" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85"/><rect x="-4" y="2" width="8" height="9" rx="2" fill="#e3e7ee" stroke="#868f9e" stroke-width="1.2"/>'},
+ olive:{n:'زيتون',get k(){return st.mode==='four'?29:7},d:'<circle r="7" fill="#2b2433"/><circle r="3" fill="#8a3b2c"/>'},
+ shish:{n:'شيش',k:5,d:'<rect x="-9" y="-8" width="18" height="16" rx="4" fill="#9a5630" stroke="#5e2f14" stroke-width="1.5"/><path d="M-5-6L-2 6M1-6L4 6" stroke="#4a2410" stroke-width="2" stroke-linecap="round" opacity=".7"/><rect x="-7" y="-6.5" width="8" height="3" rx="1.5" fill="#c58352" opacity=".7"/>'},
+ pepper:{n:'فلفل',k:5,d:'<path d="M-13 3Q0-9 13-1" stroke="#6faa3c" stroke-width="5" fill="none" stroke-linecap="round"/>'},
+ corn:{n:'ذرة',k:8,d:'<g fill="#f7c81e" stroke="#c99a06" stroke-width="1"><ellipse cx="-5" cy="-3" rx="3.6" ry="4.6"/><ellipse cx="4" cy="-4" rx="3.6" ry="4.6" transform="rotate(30 4 -4)"/><ellipse cx="0" cy="5" rx="3.6" ry="4.6" transform="rotate(-25 0 5)"/></g><g fill="#fff3a8"><circle cx="-6" cy="-5" r="1.1"/><circle cx="3" cy="-6" r="1.1"/><circle cx="-1" cy="3" r="1.1"/></g>'},
+ tom:{n:'طماطم',k:5,d:'<path d="M-14 6A14 14 0 0 1 14 6z" fill="#e2432b" stroke="#a52a16" stroke-width="1.5" stroke-linejoin="round"/><path d="M-9.5 4A9.5 9.5 0 0 1 9.5 4z" fill="#f26b49"/><path d="M-4 3L-3-3M0 3V-5M4 3L3-3" stroke="#ffd9a8" stroke-width="1.4" stroke-linecap="round"/>'}
+};
+var WA='905066677733';
+var PR={mozz:50,corn:10,pep:30,mush:20,shish:20},P4={mozz:45,pep:25,mush:15,shish:15,corn:15,tom:5,pepper:5,olive:0},LIM={mozz:2};
+var WAI=document.querySelector('.wi').outerHTML;
+var PRICE={M:175,XL:275},SC={M:.84,XL:1},PER=5,MAXP=3;
+var st={mode:'mix',saved:{},q:{},bx:{},size:'XL',items:{},orders:0,busy:false};
+var $=function(i){return document.getElementById(i)};
+function rnd(){var a=Math.random()*6.283,r=Math.sqrt(Math.random())*100;return[Math.cos(a)*r,Math.sin(a)*r,Math.random()*360]}
+function pick(t,g){var best=null,bd=-1;for(var c=0;c<14;c++){var p=g?g():rnd(),m=1e9;for(var u in st.items){var L=st.items[u].concat(st.bx[u]||[]),f=u===t?1:1.4;for(var j=0;j<L.length;j++){var dx=L[j][0]-p[0],dy=L[j][1]-p[1],d=Math.sqrt(dx*dx+dy*dy)*f;if(d<m)m=d}}if(m>bd){bd=m;best=p}}return best}
+function piece(t,p,cls){return '<g class="'+(cls||'')+'" transform="translate('+p[0].toFixed(1)+' '+p[1].toFixed(1)+') rotate('+p[2].toFixed(0)+')">'+T[t].d+'</g>'}
+function base(){return '<defs><radialGradient id="sa"><stop offset="0" stop-color="#d63a1c"/><stop offset="1" stop-color="#b62a12"/></radialGradient><radialGradient id="ch"><stop offset="0" stop-color="#fcedbd"/><stop offset="1" stop-color="#f0d086"/></radialGradient><radialGradient id="cr"><stop offset="0" stop-color="#f6d9a4"/><stop offset="1" stop-color="#d9a45f"/></radialGradient></defs><circle r="132" fill="url(#cr)"/><circle r="122" fill="#e8bb7a"/><circle r="112" fill="url(#sa)"/>'+
+ '<g fill="none" stroke="#e8573a" stroke-width="4" opacity=".45"><circle r="40"/><circle r="70"/><circle r="95"/></g>'+
+ '<g fill="#7b2410" opacity=".35"><circle cx="-90" cy="70" r="4"/><circle cx="100" cy="-60" r="3.5"/><circle cx="20" cy="115" r="4"/><circle cx="-60" cy="-110" r="3"/></g>'}
+function draw(newT){
+ var h=base(),order=['mozz','tom','pep','corn','mush','pepper','olive','shish'];
+ if(st.crust){for(var j=0;j<24;j++){var an=j*Math.PI/12;h+='<circle cx="'+(127*Math.cos(an)).toFixed(1)+'" cy="'+(127*Math.sin(an)).toFixed(1)+'" r="6.5" fill="#f9e6ae" stroke="#d6a45d" stroke-width="1.5"/>'}}
+ order.forEach(function(t){var L=st.items[t]||[];if(t==='mozz'&&L.length>T.mozz.k)h+=(false?sec(0)+'<g fill="#e3a94a" opacity="0">':'<circle r="114" fill="url(#ch)" class="'+(newT==='mozz'&&L.length<=2*T.mozz.k?'pc':'')+'"/><g fill="#e3a94a" opacity=".35">')+'<circle cx="-50" cy="-30" r="9"/><circle cx="40" cy="45" r="11"/><circle cx="60" cy="-45" r="7"/><circle cx="-35" cy="60" r="8"/><circle cx="5" cy="-75" r="6"/></g>';L.forEach(function(p,i,a){h+=piece(t,p,(newT===t&&i>=a.length-T[t].k)?'pc':'')});(st.bx[t]||[]).forEach(function(p){h+=piece(t,p,newT===t&&L.length<=T[t].k?'pc':'')})});
+ $('pizza').innerHTML=h+(st.mode==='four'&&!(st.items.olive&&st.items.olive.length)?'<path d="M0-114V114M-114 0H114" stroke="#f6e4b0" stroke-width="2" opacity=".2" stroke-dasharray="3 7"/>':'');
+ $('pizza').style.transform='scale('+SC[st.size]+')';
+}
+function total(){var n=0,x=0;for(var t in st.items){var c=Math.ceil(st.items[t].length/T[t].k);n+=c;x+=c*(P4[t]!=null?P4[t]:PER)}return{n:n,v:PRICE[st.size]+x+(st.crust?50:0)}}
+function sync(){var sb=$('stuf');if(sb){sb.classList.toggle('on',!!st.crust);sb.setAttribute('aria-pressed',!!st.crust)}
+ var tt=total();
+ $('price').textContent=tt.v.toFixed(0)+' ₺';
+ document.querySelectorAll('.ingw').forEach(function(w){
+  var t=w.dataset.t,c=Math.ceil((st.items[t]||[]).length/T[t].k);
+  w.querySelector('.ing').classList.toggle('on',c>0);
+  w.querySelector('.cnt').textContent=c;
+ });
+ $('hint').textContent=st.mode==='four'?(Object.keys(st.q).length?'الأرباع المستخدمة: '+Object.keys(st.q).length+' من 4':'اختر حتى 4 أصناف، لكل صنف ربع'):tt.n?('عدد المكوّنات: '+tt.n+' · فرن عمو أبو عمر'):'المس مكوّنًا لإضافته';
+}
+function icon(t){var s='';for(var i=0;i<(t==='mozz'?3:1);i++)s+=piece(t,[(i-1)*2,(i-1)*7,i*35]);return '<svg viewBox="-20 -20 40 40" style="overflow:visible">'+(t==='mozz'?'<g transform="scale(1.15)">'+s+'</g>':s)+'</svg>'}
+function build(){
+ var g=$('grid');
+ Object.keys(T).forEach(function(t){
+  var w=document.createElement('div');w.className='ingw';w.dataset.t=t;
+  w.innerHTML='<button class="ing" aria-label="أضف '+T[t].n+'">'+icon(t)+'</button><b class="cnt"></b><button class="minus" aria-label="أزل '+T[t].n+'">−</button><span>'+T[t].n+'</span>';
+  g.appendChild(w);
+ });
+}
+$('grid').addEventListener('click',function(e){
+ if(st.busy)return;
+ var w=e.target.closest('.ingw');if(!w)return;
+ var t=w.dataset.t,a=st.items[t]=st.items[t]||[];
+ if(e.target.closest('.minus')){a.splice(-T[t].k,T[t].k);if(!a.length){delete st.q[t];delete st.bx[t]}draw();sync();return}
+ if(st.mode==='four'&&t!=='mozz'&&t!=='olive'&&st.q[t]==null){var fr=[0,1,2,3].filter(function(x){for(var u in st.q)if(st.q[u]===x)return false;return true});if(!fr.length){$('hint').textContent='الأرباع الأربعة مشغولة، أزل صنفاً أولاً';return}st.q[t]=fr[0]}var lm=st.mode==='four'&&t==='olive'?1:(LIM[t]||MAXP);if(Math.ceil(a.length/T[t].k)>=lm){$('hint').textContent='الحد الأقصى '+lm+' من '+T[t].n;return}
+ var ex=(a.length===0&&t!=='mozz'&&!(st.mode==='four'&&t==='olive'))?Math.max(4,Math.round(T[t].k*(st.mode==='four'?1:1.5))):0;for(var i=0;i<T[t].k+ex;i++)a.push(st.mode==='four'&&t==='olive'?ov(i):pick(t,st.mode==='four'&&t!=='mozz'?qg(st.q[t]):null));if(ex)st.bx[t]=a.splice(a.length-ex,ex);
+ draw(t);sync();
+});
+$('sz').addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b||st.busy)return;
+ st.size=b.dataset.s;
+ document.querySelectorAll('#sz button').forEach(function(x){x.classList.toggle('on',x===b)});
+ draw();sync();
+});
+function clear(){st.items={};st.q={};st.bx={};st.crust=false;draw();sync()}
+$('reset').onclick=function(){if(!st.busy)clear()};
+$('cta').onclick=function(){
+ if(st.busy)return;
+ var tt=total(),c=$('cta'),v=tt.v.toFixed(0);
+ var lines=[];
+ for(var k in st.items){var q=Math.ceil(st.items[k].length/T[k].k);if(q>0)lines.push('• '+T[k].n+(k==='mozz'?' (مستوى '+q+')':' × '+q))}
+ if(st.mode==='four'){lines=[];if(st.items.mozz&&st.items.mozz.length)lines.push('• موزاريلا على كل الأرباع (مستوى '+Math.ceil(st.items.mozz.length/T.mozz.k)+')');if(st.items.olive&&st.items.olive.length)lines.push('• زيتون يقسم الأرباع');for(var z in st.q)if(st.items[z]&&st.items[z].length)lines.push('• الربع '+(st.q[z]+1)+': '+T[z].n+(z==='mozz'?' (مستوى ':' (×')+Math.ceil(st.items[z].length/T[z].k)+')')}
+ if(st.crust)lines.push('• حشوة أطراف');
+ var msg='طلب جديد 🍕\n'+(st.mode==='four'?'بيتزا الفصول الأربعة':'بيتزا مشكلة')+' - فرن عمو أبو عمر - حجم '+st.size+'\nالمكونات:\n'+(lines.length?lines.join('\n'):'• بدون إضافات')+'\nالإجمالي: '+v+' ₺';
+ var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+ var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+ st.busy=true;st.orders++;
+ $('badge').style.display='flex';$('badge').textContent=st.orders;
+ c.classList.add('ok');c.innerHTML='✓ تمت الإضافة لطلبك · <span class="pr">'+v+' ₺</span>';
+ setTimeout(function(){
+  c.classList.remove('ok');
+  c.innerHTML='<span class="wl">'+WAI+'ارسال للواتساب</span><span class="pr" id="price"></span>';
+  st.busy=false;clear();
+  {$('hint').innerHTML='<a href="'+url+'" target="_blank" rel="noopener" style="color:#25d366;font-weight:800">لم تفتح واتساب؟ اضغط هنا لإرسال الطلب</a>'}
+ },1700);
+};
+$('cart').onclick=function(){$('hint').textContent=st.orders?('في طلبك '+st.orders+' بيتزا'):'طلبك فارغ'};
+function ov(i){if(!i)return[0,0,0];var r=14+Math.floor((i-1)/4)*15,a=((i-1)%4)*Math.PI/2;return[Math.cos(a)*r,Math.sin(a)*r,Math.random()*360]}
+function sec(q){var a=q*Math.PI/2,b=a+Math.PI/2,R=114;return '<path d="M0 0L'+(R*Math.cos(a)).toFixed(1)+' '+(R*Math.sin(a)).toFixed(1)+'A'+R+' '+R+' 0 0 1 '+(R*Math.cos(b)).toFixed(1)+' '+(R*Math.sin(b)).toFixed(1)+'Z" fill="url(#ch)"/>'}
+function qg(qi){return function(){var a=(qi*90+10+Math.random()*70)*Math.PI/180,r=16+Math.sqrt(Math.random())*84;return[Math.cos(a)*r,Math.sin(a)*r,Math.random()*360]}}
+function buildFour(){var tmp={mozz:[],mush:[],pep:[],olive:[],corn:[]},old=st.items,i;st.items=tmp;for(i=0;i<T.mozz.k;i++)tmp.mozz.push(pick('mozz'));
+['mush','pep','olive','corn'].forEach(function(t,q){for(var j=0;j<T[t].k;j++)tmp[t].push(pick(t,qg(q)))});st.items=old;return tmp}
+function setMode(m){if(st.busy||m===st.mode)return;st.saved[st.mode]={i:st.items,q:st.q,b:st.bx};st.mode=m;var s=st.saved[m]||{i:{},q:{},b:{}};st.items=s.i;st.q=s.q;st.bx=s.b;$('h1').innerHTML=m==='four'?'الفصول <em>الأربعة</em>':'ركّب <em>بيتزتك</em>';document.querySelectorAll('.tb').forEach(function(b){b.classList.toggle('on',b.dataset.m===m)});draw();sync()}
+document.querySelector('.tabs').onclick=function(e){var b=e.target.closest('.tb');if(b)setMode(b.dataset.m)};
+$('stuf').onclick=function(){if(st.busy)return;st.crust=!st.crust;draw();sync()};
+build();draw();sync();
+</script>
+</body>
+</html>
